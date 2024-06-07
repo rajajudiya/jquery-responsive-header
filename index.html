@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link rel="stylesheet" id="colorchange" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="icon" href="image/logo/pngtree-food-logo-png-image_5297921.png">
+    	<link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/media.css">
+        <link rel="stylesheet" href="css/fancybox.css">
+
+        <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+        <title>Foodie Paradise.</title>
+    </head>
+ <body class="hidden">
+        <!-- <span id="circle" class="circle"></span> -->
+          <!-- loader -->
+         <div class="loader">
+            <img src="image/logo/logo.png" alt="">
+         </div>
+      <a href="javascript:void(0)" class="setting">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+
+      <!-- setting -->
+      <a href="javascript:void(0)" class="setting">
+        <!-- <i class="ri-settings-2-line"></i> -->
+      </a>
+      <div class="theme-box">
+        <a href="javascript:void(0)" class="color-change" id="light">Light</a>
+        <a href="javascript:void(0)" class="color-change" id="dark">Dark</a>
+      </div>
+
+        <header class="header">
+            <div class="container">
+                <div class="row d-flex align-item-center">
+                    <div class="w-2 w-md-11">
+                        <div class="cafe-logo">
+                            <img src="image/logo/logo.png" alt="">
+                        </div>
+                        <!-- <div class="toggle">
+                            <i class="fa-solid fa-gear"></i>
+                        </div> -->
+                    </div>
+                    <!-- toggle -->
+
+                    <div class="toggle w-xxl-none w-xl-none w-md-block">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    
+                    <nav class="justify-end d-flex w-md-none">
+						<div class="w-8">
+							<ul class="men align-item-center" data-aos="fade-up" data-aos-duration="1000">
+								<li>
+									<a href="#">Home</a>
+								</li>
+								<li>
+									<a href="#">About</a>
+								</li>
+								<li>
+									<a href="#">Coffee</a>
+								</li>
+								<li>
+									<a href="#">Review</a>
+								</li>
+								<li>
+									<a href="#">Blog</a>
+								</li>
+								<li>
+									<a href="#">Pages</a>
+								</li>
+								
+							</ul>
+						</div>
+					</nav>
+                </div>
+            </div>
+        </header>
+</footer>
+            <div class="bottom-to-top">
+                <a href="#">
+                    <i class="fa-solid fa-up-long"></i>
+                </a>
+            </div>
+        <script src="js/java.js"></script>
+        <script>
+            AOS.init();
+          </script>
+        <script src="js/jquery.min.js"></script>
+
+        <!-- particles -->
+        <script src="js/particles.min.js"></script>
+
+        <script src="js/app.js"></script>
+    
+          <!-- fancy-box -->
+          <script src="js/fancybox.umd.js"></script>
+        <script>
+            Fancybox.bind("[data-fancybox]", {
+            });
+        </script>
+
+        <!-- loader -->
+        
+        <script>
+            $(window).on('load',function(){
+                $('.loader').delay(1500).fadeOut(2000);
+            })
+
+        </script>
+
+        <script>
+             
+        // Fixed header
+            $(window).scroll(function(){
+                if($(window).scrollTop() >300){
+                    $(".header").addClass("fixed-header");
+                }
+
+                else{
+                    $(".header").removeClass("fixed-header");
+                }
+
+            });
+
+            // // pointer
+                        jQuery(document).ready(function() {
+
+            var mouseX = 0, mouseY = 0;
+            var xp = 0, yp = 0;
+            
+            $(document).mousemove(function(e){
+            mouseX = e.pageX - 30;
+            mouseY = e.pageY - 30; 
+            });
+            
+            setInterval(function(){
+            xp += ((mouseX - xp)/6);
+            yp += ((mouseY - yp)/6);
+            $("#circle").css({left: xp +'px', top: yp +'px'});
+            }, 20);
+
+            });
+
+            // setting
+            $(".setting").click(function(){
+                $(".theme-box").slideToggle();
+            });
+            // theme-box
+            // $(".theme-box a").click(function(){
+            //         var jinkal = $(this).data('path');
+            //         $("#colorChange").attr('href',jinkal);
+            //     });
+
+            $(".color-change").click(function(){
+                var color =$(this).attr ('id');
+                $('#colorchange').attr ('href','css/' + color + '.css');
+            })
+        </script>
+
+        <!-- counter -->
+        <script>
+            (() => {
+    const counter = document.querySelectorAll('.counter');
+    // covert to array
+    const array = Array.from(counter);
+    // select array element
+    array.map((item) => {
+        // data layer
+        let counterInnerText = item.textContent;
+
+        let count = 1;
+        let speed = item.dataset.speed / counterInnerText
+        function counterUp() {
+            item.textContent = count++
+            if (counterInnerText < count) {
+                clearInterval(stop);
+            }
+        }
+        const stop = setInterval(() => {
+            counterUp();
+        }, speed);
+    })
+})()
+
+ </script>
+    <!-- headline -->
+    
+ <script>
+    var animationDelay = 3500;
+ 
+ animateHeadline($('.cd-headline'));
+  
+ function animateHeadline($headlines) {
+     $headlines.each(function(){
+         var headline = $(this);
+         //trigger animation
+         setTimeout(function(){ hideWord( headline.find('.is-visible') ) }, animationDelay);
+         //other checks here ...
+     });
+ }
+ 
+ function hideWord($word) {
+     var nextWord = takeNext($word);
+     switchWord($word, nextWord);
+     setTimeout(function(){ hideWord(nextWord) }, animationDelay);
+ }
+  
+ function takeNext($word) {
+     return (!$word.is(':last-child')) ? $word.next() : $word.parent().children().eq(0);
+ }
+  
+ function switchWord($oldWord, $newWord) {
+     $oldWord.removeClass('is-visible').addClass('is-hidden');
+     $newWord.removeClass('is-hidden').addClass('is-visible');
+ }
+ 
+ singleLetters($('.cd-headline.letters').find('b'));
+  
+ function singleLetters($words) {
+     $words.each(function(){
+         var word = $(this),
+             letters = word.text().split(''),
+             selected = word.hasClass('is-visible');
+         for (i in letters) {
+             letters[i] = (selected) ? '<i class="in">' + letters[i] + '</i>': '<i>' + letters[i] + '</i>';
+         }
+         var newLetters = letters.join('');
+         word.html(newLetters);
+     });
+ }
+ </script>
+
+    <script>
+        $(document).ready(function(){
+            $(".toggle").click(function(){
+                $("nav").fadeToggle(2000);
+            })
+        })
+    </script>
+    </body>
+</html>
